@@ -13,12 +13,14 @@ def input_error(func):
 
     return wrapper
 
+@input_error
 def add_contact(command):
     parts = command.split()
     name, phone = parts[1], parts[2]
     contact_book[name] = phone
     return f"Added {name} with phone {phone}"
 
+@input_error
 def change_phone(command):
     parts = command.split()
     name, phone = parts[1], parts[2]
@@ -28,6 +30,7 @@ def change_phone(command):
     else:
         return f"Contact {name} not found"
 
+@input_error
 def get_phone(command):
     name = command.split()[1]
     if name in contact_book:
